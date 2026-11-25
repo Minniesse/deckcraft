@@ -1,1 +1,42 @@
 # Lines that may still name ArtCraft: <path><TAB><the whole line>. Each has its reason in KATWORK.md.
+apps/deckcraft/src/build_flavor.rs	        assert!(result.unwrap_err().contains("ArtCraft Launcher"));
+apps/deckcraft/src/build_flavor.rs	        (BuildFlavor::NightlyV1, false) => Err("Open DeckCraft Nightly from ArtCraft Launcher".into()),
+apps/deckcraft/src/main.rs	                // Nightly is managed by ArtCraft Launcher: no self-update prompt or stable feed.
+apps/deckcraft/src/main.rs	    // Nightly is managed by ArtCraft Launcher: no stable self-update helper runs in it.
+apps/deckcraft/src/profile_root.rs	            let machine = base.join("ArtCraft").join("DeckCraft");
+apps/deckcraft/src/profile_root.rs	        let nightly = data.join("ArtCraftLauncher/nightly/profiles/deckcraft");
+apps/deckcraft/src/profile_root.rs	        let per_user = local.join("Programs").join("ArtCraft").join("DeckCraft");
+apps/deckcraft/src/profile_root.rs	        let sibling = local.join("Programs").join("ArtCraft").join("ArtCraftLauncher").join("nightly").join("deckcraft");
+apps/deckcraft/src/profile_root.rs	        let valid = library.join("Application Support/ArtCraftLauncher/nightly/profiles/deckcraft");
+apps/deckcraft/src/profile_root.rs	                    roots.push(absolute(PathBuf::from(base), key)?.join("ArtCraft").join("DeckCraft"));
+apps/deckcraft/src/profile_root.rs	            roots.push(required_base(env, "LOCALAPPDATA")?.join("Programs").join("ArtCraft").join("DeckCraft"));
+crates/ui-egui/src/app/commands.rs	                // Nightly is updated by ArtCraft Launcher; its stable updater must stay idle.
+crates/ui-egui/src/backstage/tests.rs	        h.query_by_label("Based on DeckCraft by the ArtCraft team (https://github.com/storytold/deckcraft). This build is not an ArtCraft product.")
+crates/ui-egui/src/dialogs/about.rs	    "Based on DeckCraft by the ArtCraft team (https://github.com/storytold/deckcraft). This build is not an ArtCraft product.";
+crates/ui-egui/src/dialogs/about.rs	        ui.label(egui::RichText::new("MIT OR Apache-2.0 · © 2026 ArtCraft Team and the DeckCraft contributors").size(11.0).color(t.text_faint));
+crates/ui-egui/src/dialogs/updates_ui.rs	    /// Nightly is updated by ArtCraft Launcher: the stable feed, its cache and its records (all
+crates/ui-egui/src/dialogs/updates_ui.rs	pub(crate) const NIGHTLY_UPDATES: &str = "DeckCraft Nightly is updated by ArtCraft Launcher";
+crates/ui-egui/src/dialogs/updates_ui.rs	/// What Help > Check for Updates… answers in Nightly, which ArtCraft Launcher updates.
+.github/workflows/release.yml	      ARTCRAFT_SERVICES_DISPATCH_TOKEN: ${{ secrets.ARTCRAFT_SERVICES_DISPATCH_TOKEN }}
+.github/workflows/windows-arm64.yml	      install-relative-path: Programs/ArtCraft/DeckCraft
+LICENSE-MIT	Copyright (c) 2026 ArtCraft Team and the DeckCraft contributors
+NOTICE	Copyright (c) 2026 ArtCraft Team and the DeckCraft contributors.
+packaging/linux/flatpak/ai.storyteller.deckcraft.bundle.yml	  - --filesystem=xdg-data/ArtCraft/versions:ro
+packaging/linux/flatpak/ai.storyteller.deckcraft.yml	  - --filesystem=xdg-data/ArtCraft/versions:ro
+packaging/linux/package.sh	    # run is isolated like the distro package even without the ArtCraft Launcher. The GUI takes
+packaging/windows/check-install-policy.ps1	      $directories['CraftSuiteFolder'][1] -ne 'ArtCraft') { throw 'Expected the app under the ArtCraft suite folder.' }
+packaging/windows/check-install-policy.ps1	  $machineFolder = (Join-Path $machineRoot "ArtCraft\$($policy.name)") + '\'
+packaging/windows/check-install-policy.ps1	    $wanted = if ($scope -eq '1') { $machineFolder } else { (Join-Path $env:LOCALAPPDATA "Programs\ArtCraft\$($policy.name)") + '\' }
+packaging/windows/check-install-policy.ps1	    if ($dirs['INSTALLFOLDER'][0] -ne 'CraftSuiteFolder' -or $dirs['CraftSuiteFolder'][1] -ne 'ArtCraft' -or
+packaging/windows/check-install-policy.ps1	      throw 'Launcher new-install folder must be under the per-user ArtCraft suite root.'
+packaging/windows/check-install-policy.ps1	    Write-Output 'PASS ArtCraft Launcher: per-user scope, suite folder, remembered/custom paths and existing registration. No installation performed.'
+packaging/windows/deckcraft.wxs	      <Directory Id="CraftSuiteFolder" Name="ArtCraft">
+packaging/windows/INSTALLATION.md	New installations default to the current account under `Programs\ArtCraft\<App>`.
+packaging/windows/install-policy.wxi	      <Control Id="Info" Type="Text" X="20" Y="50" Width="330" Height="30" Text="{\CraftScopeText}An update keeps the existing folder. New copies use the ArtCraft folder under Programs." />
+packaging/windows/install-policy.wxi	  <SetProperty Id="INSTALLFOLDER" Action="CraftDefaultMachineFolder32" Value="[%ProgramFiles]\ArtCraft\DeckCraft\" After="CraftDefaultMachineFolder" Sequence="ui" Condition="NOT INSTALLFOLDER AND ALLUSERS = 1 AND NOT VersionNT64" />
+packaging/windows/install-policy.wxi	  <SetProperty Id="INSTALLFOLDER" Action="CraftDefaultMachineFolder" Value="[%ProgramFiles(x86)]\ArtCraft\DeckCraft\" After="CraftRestoreUserFolder" Sequence="ui" Condition="NOT INSTALLFOLDER AND ALLUSERS = 1 AND VersionNT64" />
+packaging/windows/install-policy.wxi	  <SetProperty Id="INSTALLFOLDER" Action="CraftDefaultMachineFolder" Value="[%ProgramW6432]\ArtCraft\DeckCraft\" After="CraftRestoreUserFolder" Sequence="ui" Condition="NOT INSTALLFOLDER AND ALLUSERS = 1" />
+packaging/windows/install-policy.wxi	  <SetProperty Id="INSTALLFOLDER" Action="CraftDefaultUserFolder" Value="[LocalAppDataFolder]Programs\ArtCraft\DeckCraft\" After="CraftDefaultMachineFolder32" Sequence="ui" Condition="NOT INSTALLFOLDER AND ALLUSERS &lt;&gt; 1" />
+packaging/windows/install-policy.wxi	  <SetProperty Id="INSTALLFOLDER" Action="CraftDefaultUserFolder" Value="[LocalAppDataFolder]Programs\ArtCraft\DeckCraft\" After="CraftDefaultMachineFolder" Sequence="ui" Condition="NOT INSTALLFOLDER AND ALLUSERS &lt;&gt; 1" />
+README.md	Copyright (c) 2026 ArtCraft Team and the DeckCraft contributors. Required notices are in [NOTICE](NOTICE).
+README.md	dictionary or single window state. The Nightly app is started only by ArtCraft Launcher

@@ -823,6 +823,20 @@ fn options_in_backstage_opens_preferences_and_cancel_closes_it() {
     assert!(h.state().backstage_open(), "Backstage remains open");
 }
 
+/// The About dialog names, as plain text, the upstream app this build is based on, beside its source link.
+#[test]
+fn about_dialog_names_the_upstream_app_as_plain_text() {
+    let mut h = harness(new_app());
+    h.state_mut().dialog = Some(crate::dialogs::Dialog::new("about"));
+    h.run_steps(3);
+    assert!(h.query_by_label("Source on GitHub").is_some(), "the About dialog is drawn");
+    assert!(
+        h.query_by_label("Based on DeckCraft by the ArtCraft team (https://github.com/storytold/deckcraft). This build is not an ArtCraft product.")
+            .is_some()
+    );
+    assert!(h.query_by_label("Join our community on Discord").is_none(), "no community link");
+}
+
 /// About replaces the account entry and still opens the credits dialog.
 #[test]
 fn about_has_product_links_and_credits_without_account_controls() {
@@ -835,7 +849,7 @@ fn about_has_product_links_and_credits_without_account_controls() {
     assert_eq!(page(&h), Some(Page::About));
     assert!(h.query_by_label("User Information").is_none());
     assert!(h.query_by_label("Source on GitHub").is_some());
-    assert!(h.query_by_label("Join our community on Discord").is_some());
+    assert!(h.query_by_label("Join our community on Discord").is_none(), "no community link");
     assert!(h.query_all_by_label("Appearance").next().is_some());
     click_on_page(&h, "Credits");
     h.run_steps(3);
